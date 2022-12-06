@@ -1,15 +1,14 @@
 # -*- mode: shell-script -*-
-function decode64 ()
-{
-    echo -en $1 | base64 -d
+function decode64() {
+	echo -en $1 | base64 -d
 }
 
-function logssh (){
-		ssh $@ 3>&1 1>"${1}_$(date +%d-%m-%YT%H:%M:%S).log" 1>&3
-	}
+function logssh() {
+	ssh $@ 3>&1 1>"${1}_$(date +%d-%m-%YT%H:%M:%S).log" 1>&3
+}
 
-_logssh() { 
+_logssh() {
 	compdef logssh=ssh
-}  
-  
+}
+
 compdef _logssh logssh

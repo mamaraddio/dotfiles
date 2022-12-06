@@ -12,4 +12,4 @@ plug "${ZDOTDIR:-$HOME}/aliases"
 plug "${ZDOTDIR:-$HOME}/functions"
 
 eval "$(starship init zsh)"
-eval $(ssh-agent) > /dev/null 
+eval $(ssh-agent) >/dev/null
