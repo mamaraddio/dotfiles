@@ -1,0 +1,5 @@
+# -*- mode: shell-script -*-
+function decode64 ()
+{
+    echo -en $1 | base64 -d
+}

@@ -1,0 +1,35 @@
+# Global key bindings
+
+# Use emacs key bindings.
+# bindkey -e
+
+# Load widgets that are not loaded by default.
+autoload -U up-line-or-beginning-search
+zle -N up-line-or-beginning-search
+
+autoload -U down-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+typeset -gA seq widget
+for	seq			widget (						# key name
+	'^[[H'		beginning-of-line				# Home
+	'^[[F'		end-of-line						# End
+	'^[[3~'		delete-char						# Delete
+	'^[[5~'		up-line-or-beginning-search		# PageUp
+	'^[[6~'		down-line-or-beginning-search	# PageDown
+	'^[[A'		up-line-or-history				# UpArrow - fuzzy find history backward
+	'^[[B'		down-line-or-history			# DownArrow - fuzzy find history forward
+	'^[[Z'		reverse-menu-complete			# Shift + Tab
+	'^[[2;5~'	copy-region-as-kill				# Ctrl + Insert
+	'^[[3;5~'	kill-word						# Ctrl + Delete
+	'^H'		backward-kill-word				# Ctrl + Backspace
+	'^[[1;5C'	forward-word					# Ctrl + RightArrow
+	'^[[1;5D'	backward-word					# Ctrl + LeftArrow
+	'^ '		autosuggest-accept				# Ctrl + Space
+); do
+	bindkey -M emacs $seq $widget
+	bindkey -M viins $seq $widget
+	bindkey -M vicmd $seq $widget
+done
+
+# vim: set ts=4 sw=4:
