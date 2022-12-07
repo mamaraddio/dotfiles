@@ -1,7 +1,7 @@
 # Global key bindings
 
 # Use emacs key bindings.
-# bindkey -e
+bindkey -e
 
 # Load widgets that are not loaded by default.
 autoload -U up-line-or-beginning-search
